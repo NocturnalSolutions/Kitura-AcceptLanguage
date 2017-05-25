@@ -14,12 +14,12 @@ public struct LanguageQualityPair {
 
 public class AcceptLanguage : RouterMiddleware {
 
-    enum NegotiationStatus {
+    public enum NegotiationStatus {
         case NegotiationIncomplete, NoAcceptLanguageHeader, NoMatch, Matched
     }
 
-    var negotiationStatus : NegotiationStatus = .NegotiationIncomplete
-    var negotiatedLanguage : LanguageQualityPair?
+    public var negotiationStatus : NegotiationStatus = .NegotiationIncomplete
+    public var negotiatedLanguage : LanguageQualityPair?
 
     let sendContentLanguageHeader: Bool
     let langsToAccept: [String]
