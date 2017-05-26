@@ -64,10 +64,10 @@ router.all("/test") { request, response, next in
         }
     }
 }
-```
 
 Kitura.addHTTPServer(onPort: 8080, with: router)
 Kitura.run()
+```
 
 To test this best, you're going to want to be able to send different Accept-Language headers. Now you can theoretically tweak your standard web browser to do this, but since the process will differ based on what browser and/or operating system you're using, I'm not going to try to explain how. Instead, I'll show you how to use `curl` to test things. 
 
