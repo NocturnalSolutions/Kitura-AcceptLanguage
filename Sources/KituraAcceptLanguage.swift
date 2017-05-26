@@ -3,8 +3,8 @@ import Kitura
 import LoggerAPI
 
 public struct LanguageQualityPair {
-    let langcode : String
-    let matchQuality : Float
+    public let langcode : String
+    public let matchQuality : Float
 
     init (negotiatedLanguage: String, matchQuality: Float = 0) {
         self.langcode = negotiatedLanguage
