@@ -69,7 +69,7 @@ Kitura.addHTTPServer(onPort: 8080, with: router)
 Kitura.run()
 ```
 
-To test this best, you're going to want to be able to send different Accept-Language headers. Now you can theoretically tweak your standard web browser to do this, but since the process will differ based on what browser and/or operating system you're using, I'm not going to try to explain how. Instead, I'll show you how to use `curl` to test things. 
+To test this best, you're going to want to be able to send different Accept-Language headers (or no header at all). Now you can theoretically tweak your standard web browser to do this, but since the process will differ based on what browser and/or operating system you're using, I'm not going to try to explain how. Instead, I'll show you how to use `curl` to test things. (You can also use `wget`, if you prefer; use `--header` to set the request header instead of `-H` as below.)
 
     > curl localhost:8080/test 
     User-agent did not send Accept-Language header; first supported language selected.
@@ -87,7 +87,7 @@ To test this best, you're going to want to be able to send different Accept-Lang
     No match made; first supported language selected.
     Hello!
 
-Of course, you can also use graphical request builder tools like Paw, Rested, etc.
+Of course, you can also use graphical HTTP request builder tools like Paw, Rested, etc.
 
 ## Rough todo list
 
