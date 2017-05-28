@@ -41,13 +41,13 @@
       "package": "SSLService",
       "reason": null,
       "repositoryURL": "https://github.com/IBM-Swift/BlueSSLService.git",
-      "version": "0.12.34"
+      "version": "0.12.35"
     },
     {
       "package": "Socket",
       "reason": null,
       "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
-      "version": "0.12.49"
+      "version": "0.12.50"
     },
     {
       "package": "SwiftyJSON",
