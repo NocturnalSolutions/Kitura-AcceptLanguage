@@ -48,7 +48,7 @@ public class AcceptLanguage : RouterMiddleware {
 
         // Mad props to http://nshipster.com/nsregularexpression/ for helping me
         // navigate the ridiculousness that is RegEx in Swift.
-        let pattern = try! NSRegularExpression(pattern: "([a-zA-Z-]+|\\*)(?:.+?([\\d\\.]+))?")
+        let pattern = try! NSRegularExpression(pattern: "([a-zA-Z-]+|\\*)(?:.+?([\\d\\.]+))?", options: [])
 
         var currentBestMatch: LanguageQualityPair?
 
