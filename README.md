@@ -12,7 +12,7 @@ Kitura Accept-Language is [Kitura](https://github.com/IBM-Swift/Kitura) middlewa
 
 `init(acceptLangs: [String], sendContentLanguageHeader: Bool = true)`
 
-`acceptLangs` is an array of language codes that your site will accept from users. For example, `["pt-br", "pt-pt", "pt", "es", "en"]`. The first language in the array will be the one selected if either the user-agent does not send an Accept-Language header, or if no match can be made between the user's requested languages and the ones your site supports.
+`acceptLangs` is an array of language codes that your site will accept from users; for example, `["pt-br", "pt-pt", "pt", "es", "en"]`. The first language in the array will be the one selected if either the user-agent does not send an Accept-Language header, or if no match can be made between the user's requested languages and the ones your site supports.
 
 If `sendContentLanguageHeader` is true, KAL will automatically add a Content-Language header to the response with the language code that it selected.
 
@@ -46,7 +46,7 @@ router.all("/test") { request, response, next in
     case .NoAcceptLanguageHeader:
         response.send("User-agent did not send Accept-Language header; first supported language selected.\n")
     case .NegotiationIncomplete:
-        response.send("Language negotiation incomplete (you should never see this message).")
+        response.send("Language negotiation incomplete (you should never see this message).\n")
     }
 
     if let lang = kal.negotiatedLanguage {
@@ -71,21 +71,31 @@ Kitura.run()
 
 To test this best, you're going to want to be able to send different Accept-Language headers (or no header at all). Now you can theoretically tweak your standard web browser to do this, but since the process will differ based on what browser and/or operating system you're using, I'm not going to try to explain how. Instead, I'll show you how to use `curl` to test things. (You can also use `wget`, if you prefer; use `--header` to set the request header instead of `-H` as below.)
 
-    > curl localhost:8080/test 
-    User-agent did not send Accept-Language header; first supported language selected.
-    Hello!
-    
-    >  curl localhost:8080/test -H "Accept-Language: zh-hans"
-    Match between requested and supported languages made.
-    你好！
-    
-    > curl localhost:8080/test -H "Accept-Language: no, zh-hant, ja, fr"
-    Match between requested and supported languages made.
-    こんにちは！
-    
-    > curl localhost:8080/test -H "Accept-Language: no, kr, pt-br"
-    No match made; first supported language selected.
-    Hello!
+```
+> curl localhost:8080/test
+User-agent did not send Accept-Language header; first supported language selected.
+Hello!
+
+>  curl localhost:8080/test -H "Accept-Language: zh-hans"
+Match between requested and supported languages made.
+你好！
+
+> curl localhost:8080/test -H "Accept-Language: no, zh-hant, ja, fr"
+Match between requested and supported languages made.
+こんにちは！
+
+> curl localhost:8080/test -H "Accept-Language: no, kr, pt-br"
+No match made; first supported language selected.
+Hello!
+```
+
+You can also use `wget`, if you prefer:
+
+```
+> wget localhost:8080/test --header="Accept-Language: no, ja;q=0.7, es;q=0.9" -q -O -
+Match between requested and supported languages made.
+¡Hola!
+```
 
 Of course, you can also use graphical HTTP request builder tools like Paw, Rested, etc.
 
