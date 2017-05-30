@@ -87,9 +87,9 @@ class KituraAcceptLanguageTests: XCTestCase {
         let router = Router()
 
         let routes = [
-            "/accept-lang": AcceptLanguage(acceptLangs: ["en", "ja"]),
-            "/accept-lang-failure": AcceptLanguage(acceptLangs: []),
-            "/accept-lang-no-header": AcceptLanguage(acceptLangs: ["en", "zh-hans"], sendContentLanguageHeader: false)
+            "/accept-lang": AcceptLanguage(["en", "ja"]),
+            "/accept-lang-failure": AcceptLanguage([]),
+            "/accept-lang-no-header": AcceptLanguage(["en", "zh-hans"], sendContentLanguageHeader: false)
         ]
 
         for (path, al) in routes {

@@ -24,7 +24,7 @@ public class AcceptLanguage : RouterMiddleware {
     let sendContentLanguageHeader: Bool
     let langsToAccept: [String]
 
-    public init(acceptLangs: [String], sendContentLanguageHeader: Bool = true) {
+    public init(_ acceptLangs: [String], sendContentLanguageHeader: Bool = true) {
         self.sendContentLanguageHeader = sendContentLanguageHeader
         self.langsToAccept = acceptLangs
     }

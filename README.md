@@ -10,7 +10,7 @@ Kitura Accept-Language is [Kitura](https://github.com/IBM-Swift/Kitura) middlewa
 
 2. Initialize KAL. The signature for its init method is:
 
-`init(acceptLangs: [String], sendContentLanguageHeader: Bool = true)`
+`init(_ acceptLangs: [String], sendContentLanguageHeader: Bool = true)`
 
 `acceptLangs` is an array of language codes that your site will accept from users; for example, `["pt-br", "pt-pt", "pt", "es", "en"]`. The first language in the array will be the one selected if either the user-agent does not send an Accept-Language header, or if no match can be made between the user's requested languages and the ones your site supports.
 
@@ -30,7 +30,7 @@ import KituraAcceptLanguage
 
 let router = Router()
 
-let kal = AcceptLanguage(acceptLangs: ["en", "ja", "zh-hans", "es"])
+let kal = AcceptLanguage(["en", "ja", "zh-hans", "es"])
 
 router.all("/test", middleware: kal)
 router.all("/test") { request, response, next in
